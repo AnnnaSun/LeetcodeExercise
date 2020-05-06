@@ -22,7 +22,7 @@ public class binaryTreeDemo {
         if (lower != null && val <= lower) return false;
         if (upper != null && val >= upper) return false;
 
-        if (! helper(node.right, val, upper)) return false;
+        if (! helper(node.right, val, upper)) return false;//比对右节点，最小为val，upper未知
         if (! helper(node.left, lower, val)) return false;
         return true;
     }
