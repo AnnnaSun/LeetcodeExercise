@@ -38,6 +38,6 @@ public class subdomainVisits {
     }
 
     public static void main(String[] args) {
-        subdomainVisits(new String[]{"900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"});
+        getsubdomainVisits(new String[]{"900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"});
     }
 }
