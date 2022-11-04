@@ -16,4 +16,10 @@ public class solution11_04 {
         return result;
 
     }
+
+//    由于2*A一定是偶数，所以找到了这个规律后，我们就可以首先只朝一个方向移动
+//    （由于target会有负数的情况，所以为了统一计算方式，我们将target取绝对值即可，
+//    即：t = Math.abs(target)），
+//    只有当移动的总距离 num 的值大于等于 t （target的绝对值），并且 num 减 t 是偶数，才表示当前情况满足题目要求，即：满足到达 target 所需的最小移动次数。
+//
 }
