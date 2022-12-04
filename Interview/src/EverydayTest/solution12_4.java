@@ -52,6 +52,7 @@ class solution12_4_1{
         if (x >= target) {
             return x;//获取到的basecost直接大于target就返回
         }
+        //can[i] 表示对于甜品制作开销为 i是否存在合法方案，如果存在则其等于 true，否则为 false，初始为 false
         boolean[] can = new boolean[target + 1];//初始化动态数组
 //        当最小的基料开销小于target 时，我们可以对超过target 的制作开销方案只保存其最小的一份即可，
 //        并可以初始化为 2×target−x，因为大于该开销的方案与目标价格target 的距离一定大于仅选最小基料的情况，所以一定不会是最优解
@@ -62,20 +63,22 @@ class solution12_4_1{
         int res = 2 * target - x;
         for (int b : baseCosts) {
             if (b <= target) {
-                can[b] = true;
+                can[b] = true;//单独选择一种基料的情况是合法的
             } else {
                 res = Math.min(res, b);
             }
         }
         for (int t : toppingCosts) {
+            //直接将每种配料变为两个，然后对于两个配料都进行放置即可
             for (int count = 0; count < 2; ++count) {
+                //当要放置的配料开销为 t， 每一个状态的求解只和前面的状态有关，所以我们可以从后往前来更新每一个状态
                 for (int i = target; i > 0; --i) {
                     if (can[i] && i + t > target) {
                         res = Math.min(res, i + t);
-                    }
+                    }//价格为i的时候存在合法方案，并且加上小料的价格大于了target，更新res
                     if (i - t > 0) {
                         can[i] = can[i] | can[i - t];
-                    }
+                    }//小料价格超过了价格i，更新价格为i 的状态
                 }
             }
         }
