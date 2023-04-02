@@ -12,7 +12,7 @@ public class soluition230302 {
             if (length>=32)return "ERROR";
         }
         res.append((int)n);
-        return res.toString();
+         return res.toString();
     }
 
     public static void main(String[] args) {
